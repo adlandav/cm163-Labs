@@ -27,16 +27,90 @@
         document.body.appendChild(renderer.domElement);
 
         var geometry = new THREE.BoxGeometry();
-        var material = new THREE.MeshBasicMaterial({ color: '#9B58EC' });
-        var cube = new THREE.Mesh(geometry, material);
-        scene.add(cube);
+        var material = new THREE.MeshBasicMaterial({ color: 0x9B58EC });
+        var cube1 = new THREE.Mesh(geometry, material);
+
+        //var geometry2 = new THREE.BoxGeometry();
+        material = new THREE.MeshBasicMaterial({ color: 0x58DCEC });
+        var cube2 = new THREE.Mesh(geometry, material);
+        cube2.translateX(2);
+        cube2.translateY(3);
+
+        //var geometry3 = new THREE.BoxGeometry();
+        material = new THREE.MeshBasicMaterial({ color: 0xACDA4C });
+        var cube3 = new THREE.Mesh(geometry, material);
+        cube3.translateX(-2);
+        cube2.translateY(-3);
+
+        scene.add(cube1);
+        scene.add(cube2);
+        scene.add(cube3);
+
         camera.position.z = 5; //this moves the camera towards the viewer
+
+        var colors = [
+            0x9B58EC, 0x58DCEC, 0xACDA4C,
+            0xFF03FB, 0xFFF603, 0x00FF6A,
+            0xFF0000, 0xD08138, 0x0059D7
+            ];
+
+        var movementSpeed = 0.05;
+        var rotationSpeed = 0.03;
+
+        var movedUp = true;
+        var shrinked = true;
+        var tmp;
+
+        var cub3X = 1;
+        var amount = 1;
 
         function animate() {
 
-            geometry.rotateX(0.01);
-            geometry.rotateY(0.01);
+            cube1.rotateX(rotationSpeed);
+            cube1.rotateY(rotationSpeed);
 
+            if (cube2.position.y < 3 && !movedUp) {
+                cube2.position.y += movementSpeed;
+                cube3.position.y -= movementSpeed;
+
+                cube2.rotateX(rotationSpeed);
+                cube2.rotateY(rotationSpeed);
+
+                cube3.rotateX(rotationSpeed);
+                cube3.rotateY(rotationSpeed);
+                
+                tmp = cube3.position.y;
+
+                cube3.scale.x = 0.5 + ((tmp > 0)?  ((tmp / 3) ) : -(tmp / 3));
+                cube3.scale.y = cube3.scale.x;
+                cube3.scale.z = cube3.scale.x;
+
+                movedUp = cube2.position.y >= 3;
+                if (movedUp) {
+                    cube2.material.color.setHex( colors[Math.floor(Math.random() * 9)] );
+                }
+            }
+            else {
+                cube2.position.y -= movementSpeed;
+                cube3.position.y += movementSpeed;
+
+                cube2.rotateX(-rotationSpeed);
+                cube2.rotateY(-rotationSpeed);
+
+                cube3.rotateX(-rotationSpeed);
+                cube3.rotateY(-rotationSpeed);
+
+                tmp = cube2.position.y;
+
+                cube3.scale.x = 0.5 + ((tmp > 0)?  ((tmp / 3) ) : -(tmp / 3));
+                cube3.scale.y = cube3.scale.x;
+                cube3.scale.z = cube3.scale.x;
+
+                movedUp = cube2.position.y > -3;
+                if (!movedUp) {
+                    cube2.material.color.setHex( colors[Math.floor(Math.random() * 9)] );
+                }
+            }
 
             requestAnimationFrame(animate);
             renderer.render(scene, camera);
