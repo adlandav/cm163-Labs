@@ -4,4 +4,4 @@
 # Lab2
 [part1](https://drive.google.com/file/d/1pWu6y_ckZrOspoGqalek8Jl1Z0oqBWdO/view?usp=sharing)
 
-[part2](images/lab2Part2.png)
+[part2](images/lab2Part2.PNG)
