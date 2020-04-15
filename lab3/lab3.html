@@ -18,6 +18,12 @@
 <body>
 	<script src="../threejs/build/three.js"></script>
 	<script>
+		THREE.Cache.enabled = true;
+		var count = 0;
+		var loader = new THREE.FileLoader();
+		var fshader, vshader;
+		var fRainBow, vRainbow;
+
 		// setup the scene
 		var scene = new THREE.Scene();
 		var camera = new THREE.PerspectiveCamera(75,
@@ -26,6 +32,7 @@
 		renderer.setSize(window.innerWidth, window.innerHeight);
 		document.body.appendChild(renderer.domElement);
 		camera.position.z = 5;
+
 
 		// setup the cubes
 		var cubes = [];
@@ -51,6 +58,7 @@
 		cubes[1].translateX(-2);
 
 
+
 		//adding cubes to scene
 		for (var i = 0; i < cubes.length; i++) {
 			scene.add(cubes[i]);
@@ -60,6 +68,8 @@
 		var light = new THREE.PointLight(0xffffff, 1, 1000);
 		light.position.set(10, 10, 10);
 		scene.add(light);
+
+
 
 		function animate() {
 			requestAnimationFrame(animate);
@@ -71,6 +81,148 @@
 			renderer.render(scene, camera);
 		}
 		animate();
+
+		//adds cube with custom shader
+		//var geometry1, material1, material2, mesh1, mesh2;
+
+		loadSampleShaders();
+		function addCoolCube() {
+
+			if (count >= 2) {
+				let uniforms = {
+					colorB: {
+						type: 'vec3', value: new
+							THREE.Color(0xFF0000)
+					},
+					colorA: {
+						type: 'vec3', value: new
+							THREE.Color(0X0FF9900)
+					}
+				};
+
+				var geometry1 = new THREE.BoxGeometry(1, 1, 1);
+				var material1 = new THREE.ShaderMaterial({
+					uniforms: uniforms,
+					fragmentShader: fshader,
+					vertexShader: vshader,
+					precision: "mediump"
+				});
+
+				var mesh1 = new THREE.Mesh(geometry1, material1);
+				mesh1.position.x = 0;
+				cubes.push(mesh1);
+				scene.add(mesh1);
+			}
+		}
+
+		loadMyShaders();
+		function addOtherCoolCube() {
+			if (count >= 2) {
+				// let uniforms = {
+				// 	colorB: {
+				// 		type: 'vec3', value: new
+				// 			THREE.Color(0xAA0CFF)
+				// 	},
+				// 	colorA: {
+				// 		type: 'vec3', value: new
+				// 			THREE.Color(0X0800FF)
+				// 	}
+				// };
+
+				var geometry1 = new THREE.BoxGeometry(1, 1, 1);
+				var material2 = new THREE.ShaderMaterial({
+					//uniforms: uniforms,
+					fragmentShader: fRainBow,
+					vertexShader: vRainbow,
+					precision: "mediump"
+				});
+
+				var mesh2 = new THREE.Mesh(geometry1, material2);
+				mesh2.position.x = 2;
+				cubes.push(mesh2);
+				scene.add(mesh2);
+			}
+		}
+
+		function loadSampleShaders() {
+			//Loading shaders
+			loader.load('shaders/vertexShader.vert',
+				// onLoad callback
+				function (data) {
+					console.log(data); // output the text to the console
+					vshader = data;
+					count += 1;
+					addCoolCube(); // we will write this method
+					//addOtherCoolCube();
+				},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+
+			loader.load('shaders/fragmentShader.frag',
+				// onLoad callback
+				function (data) {
+					console.log(data); // output the text to the console
+					fshader = data;
+					count += 1;
+					addCoolCube(); // we will write this method
+					//addOtherCoolCube();
+				},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+		}
+		function loadMyShaders() {
+			//Loading shaders
+			loader.load('shaders/rainbow.vert',
+				// onLoad callback
+				function (data) {
+					console.log(data); // output the text to the console
+					vRainbow = data;
+					count += 1;
+					addOtherCoolCube(); // we will write this method
+					//addOtherCoolCube();
+				},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+
+			loader.load('shaders/rainbow.frag',
+				// onLoad callback
+				function (data) {
+					console.log(data); // output the text to the console
+					fRainBow = data;
+					count += 1;
+					addOtherCoolCube(); // we will write this method
+					//addOtherCoolCube();
+				},
+				// onProgress callback
+				function (xhr) {
+					console.log((xhr.loaded / xhr.total * 100) + '% loaded');
+				},
+				// onError callback
+				function (err) {
+					console.error('An error happened');
+				});
+		}
+
+
+
 	</script>
 </body>
 
