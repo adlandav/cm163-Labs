@@ -13,3 +13,4 @@
 # The second from the left is a combination of the previous material and a height map
 # The next cube is an mixing between 2 colors (orange and yeallow)
 # The last cube gives a color to each vertex of the cube based on their position and interpolates in between them
+![lab3](images/lab3.PNG)
