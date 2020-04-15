@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>Lab 3: Shaders in Three.js</title>
+	<style>
+		body {
+			margin: 0;
+		}
+
+		canvas {
+			display: block;
+		}
+	</style>
+</head>
+
+<body>
+	<script src="../threejs/build/three.js"></script>
+	<script>
+		// setup the scene
+		var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera(75,
+			window.innerWidth / window.innerHeight, 0.1, 1000);
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		document.body.appendChild(renderer.domElement);
+		camera.position.z = 5;
+
+		// setup the cubes
+		var cubes = [];
+		var geometry = new THREE.BoxGeometry();
+
+		//tutorial cube
+		var material = new THREE.MeshPhongMaterial({
+			color: 0xdddddd,
+			specular: 0x00ff00, shininess: 30
+		});
+		cubes.push(new THREE.Mesh(geometry, material));
+		cubes[0].translateX(-4);
+
+		var mapHeight = new THREE.TextureLoader().load("../images/bricks_Height_Map.png");
+		var material = new THREE.MeshPhongMaterial({
+			color: 0xFFAA0C,
+			specular: 0xFF986B,
+			shininess: 5,
+			bumpMap: mapHeight,
+			bumpScale: 12
+		});
+		cubes.push(new THREE.Mesh(geometry, material));
+		cubes[1].translateX(-2);
+
+
+		//adding cubes to scene
+		for (var i = 0; i < cubes.length; i++) {
+			scene.add(cubes[i]);
+		}
+
+		// add the light
+		var light = new THREE.PointLight(0xffffff, 1, 1000);
+		light.position.set(10, 10, 10);
+		scene.add(light);
+
+		function animate() {
+			requestAnimationFrame(animate);
+
+			for (var i = 0; i < cubes.length; i++) {
+				cubes[i].rotateX(0.003);
+				cubes[i].rotateY(0.003);
+			}
+			renderer.render(scene, camera);
+		}
+		animate();
+	</script>
+</body>
+
+</html>

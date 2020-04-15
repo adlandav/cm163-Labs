@@ -52,7 +52,7 @@
             0x9B58EC, 0x58DCEC, 0xACDA4C,
             0xFF03FB, 0xFFF603, 0x00FF6A,
             0xFF0000, 0xD08138, 0x0059D7
-            ];
+        ];
 
         var movementSpeed = 0.05;
         var rotationSpeed = 0.03;
@@ -78,16 +78,16 @@
 
                 cube3.rotateX(rotationSpeed);
                 cube3.rotateY(rotationSpeed);
-                
+
                 tmp = cube3.position.y;
 
-                cube3.scale.x = 0.5 + ((tmp > 0)?  ((tmp / 3) ) : -(tmp / 3));
+                cube3.scale.x = 0.5 + ((tmp > 0) ? ((tmp / 3)) : -(tmp / 3));
                 cube3.scale.y = cube3.scale.x;
                 cube3.scale.z = cube3.scale.x;
 
                 movedUp = cube2.position.y >= 3;
                 if (movedUp) {
-                    cube2.material.color.setHex( colors[Math.floor(Math.random() * 9)] );
+                    cube2.material.color.setHex(colors[Math.floor(Math.random() * 9)]);
                 }
             }
             else {
@@ -102,13 +102,13 @@
 
                 tmp = cube2.position.y;
 
-                cube3.scale.x = 0.5 + ((tmp > 0)?  ((tmp / 3) ) : -(tmp / 3));
+                cube3.scale.x = 0.5 + ((tmp > 0) ? ((tmp / 3)) : -(tmp / 3));
                 cube3.scale.y = cube3.scale.x;
                 cube3.scale.z = cube3.scale.x;
 
                 movedUp = cube2.position.y > -3;
                 if (!movedUp) {
-                    cube2.material.color.setHex( colors[Math.floor(Math.random() * 9)] );
+                    cube2.material.color.setHex(colors[Math.floor(Math.random() * 9)]);
                 }
             }
 
