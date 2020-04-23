@@ -1,3 +1,0 @@
-x = bottom(u * 7)
-y = bottom(v * 7)
-black
