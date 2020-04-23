@@ -33,7 +33,6 @@
 		document.body.appendChild(renderer.domElement);
 		camera.position.z = 5;
 
-
 		// setup the cubes
 		var cubes = [];
 		var geometry = new THREE.BoxGeometry();
@@ -68,8 +67,6 @@
 		var light = new THREE.PointLight(0xffffff, 1, 1000);
 		light.position.set(10, 10, 10);
 		scene.add(light);
-
-
 
 		function animate() {
 			requestAnimationFrame(animate);
