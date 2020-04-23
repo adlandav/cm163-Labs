@@ -22,7 +22,7 @@
 ### 24
 - a) x = (u * 7)
 - b) y = (v * 7)
-- black
+- c) black
 
 ### cubes
 
