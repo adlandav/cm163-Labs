@@ -16,7 +16,7 @@
 
 ![lab3](images/lab3.PNG)
 
-# Lab3
+# Lab4
 [Video of the cubes](https://drive.google.com/file/d/1LoJKRUBF0j84DZX0MrHIM1S408vYO-Ox/view?usp=sharing)
 
 ### 24
