@@ -32,3 +32,5 @@
 - The 4th cube is using our written vertex and fragment shader. Where the fragment shader uses a sampler to put a texture on the cube
 - The 5th cube is using a modified version of the written fragShader. It implements a function which maps a UV point to a value in the range which depends on the number of tiles we want to have. For example, if we want to devide the cube in 4, that gives me a range of 0.25 to which I map a UV coordinate to fit in. Finally, I scale the vector passed to fragColor, to adjust the image into the tile size. Normally I would have preffered to use recursion, but glsl won't allow that. 
 
+![lab4](images/lab4.PNG)
+
