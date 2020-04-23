@@ -1,7 +1,7 @@
 threejs
 sampleModels
 sampleModels/
-res
-res/
+re
+re/
 *.glb
 *.obj
