@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Lab 4: Textures & Normal Maps</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        canvas {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script src="../threejs/build/three.js"></script>
+    <script>
+        // setup the scene
+        var scene = new THREE.Scene();
+        var camera = new THREE.PerspectiveCamera(75,
+            window.innerWidth / window.innerHeight, 0.1, 1000);
+        var renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+        camera.position.z = 5;
+
+        // setup Textures
+        var texNnorms = [];
+        texNnorms.push(THREE.ImageUtils.loadTexture("../res/173b.jpg"));
+        texNnorms.push(THREE.ImageUtils.loadTexture("../res/173_norm.jpg"));
+
+        //setup Materials
+        var materials = [];
+        materials.push(new THREE.MeshPhongMaterial({ map: texNnorms[0] }));
+        materials.push(new THREE.MeshPhongMaterial({ map: texNnorms[0], normalMap: texNnorms[1] }));
+
+        // setup the cubes
+		var cubes = [];
+		var geometry = new THREE.BoxGeometry();
+
+        cubes.push(new THREE.Mesh(geometry, materials[0]));
+        cubes.push(new THREE.Mesh(geometry, materials[1]));
+        cubes[1].position.x -= 2;
+
+        //adding cubes to scene
+		for (var i = 0; i < cubes.length; i++) {
+			scene.add(cubes[i]);
+		}
+
+        // add the light
+        var light = new THREE.PointLight(0xffffff, 1, 1000);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        var lightSpeed = 0.01;
+        var dir = lightSpeed;
+
+        function animate() {
+
+            if (light.position.x <= -20) {
+                dir = lightSpeed;
+            }
+            else if (light.position.x >= 20) {
+                dir = -lightSpeed;
+            }
+
+            light.position.x += dir;
+
+            for (var i = 0; i < cubes.length; i++) {
+				cubes[i].rotateX(0.001);
+				cubes[i].rotateY(0.001);
+			}
+
+            requestAnimationFrame(animate);
+            renderer.render(scene, camera);
+        }
+        animate();
+
+
+    </script>
+</body>
+
+</html>
