@@ -34,8 +34,8 @@
 
         // setup Textures
         var texNnorms = [];
-        texNnorms.push(THREE.ImageUtils.loadTexture("../res/173b.jpg"));
-        texNnorms.push(THREE.ImageUtils.loadTexture("../res/173_norm.jpg"));
+        texNnorms.push(THREE.ImageUtils.loadTexture("../res/161.jpg"));
+        texNnorms.push(THREE.ImageUtils.loadTexture("../res/161_norm.jpg"));
         texNnorms.push(THREE.ImageUtils.loadTexture("../res/165.jpg"));
         texNnorms.push(THREE.ImageUtils.loadTexture("../res/165_norm.jpg"));
 
@@ -132,7 +132,7 @@
                             THREE.ImageUtils.loadTexture("../res/176.jpg")
                     }
                 };
-                
+
 
                 //var geometry1 = new THREE.BoxGeometry(1, 1, 1);
                 var material1 = new THREE.ShaderMaterial({
@@ -183,7 +183,8 @@
             function (err) {
                 console.error('An error happened');
             });
-            loader.load('shaders/vertexShader.vert',
+
+        loader.load('shaders/vertexShader.vert',
             // onLoad callback
             function (data) {
                 console.log(data); // output the text to the console
@@ -200,7 +201,7 @@
                 console.error('An error happened');
             });
 
-        loader.load('shaders/fragmentShader.frag',
+        loader.load('shaders/tileShader.frag',
             // onLoad callback
             function (data) {
                 console.log(data); // output the text to the console
