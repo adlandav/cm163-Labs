@@ -11,7 +11,7 @@ float absIt(float a) {
 
 float tileItUp(float x, float range) {
 	float substractor = range;
-	for (int i = 0; i < I_SCALAR; i++) {
+	for (int i = 1; i < I_SCALAR; i++) {
 		if (x <= substractor) {return x;}
 		else if (x <= (range + substractor)) {return x - substractor;}
 		else {substractor += range;}
