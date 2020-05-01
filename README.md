@@ -1,7 +1,7 @@
 # cm163-Labs
  Labs for the game graphics class
 
-# Lab4
+# Lab5
 [Video of the microgame](https://drive.google.com/file/d/12b4t09sYdtp9lHlDzF32ntG9jKXG_7He/view?usp=sharing)
 
 - Swapped the skybox for a space skybox
