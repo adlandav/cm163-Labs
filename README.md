@@ -14,7 +14,7 @@
 
 ### Materials
 
-![lab6](images/lab6.2.PNG)
+![lab6](images/lab6.2.png)
 
 - I made a material that somewhat resembles the lid of a grany metal box. It was made By tinkering with the metalic values of Unity's standard shader, and also adding some noise.
 - The two texture objects are most noticeable on the floor and the walls of the scene. One of them is made from planks of wood, and the other is a leather texture.
