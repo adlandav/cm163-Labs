@@ -1,6 +1,25 @@
 # cm163-Labs
  Labs for the game graphics class
 
+# Lab6
+
+![lab6](images/lab6.1.PNG)
+
+### Light Definitions
+
+- Point Light: Behaves like a lightbulb. It illuminates objects close to it on the scene.
+- Spot Light: Behaves like a flashlight. Lights objects in a cone.
+- Directional Light: Behaves like the sun. Affects all objects on the scene based on direction.
+- Area Light: Only works when baking a light map. It shines in all directions to one side of a plane.
+
+### Materials
+
+![lab6](images/lab6.2.PNG)
+
+- I made a material that somewhat resembles the lid of a grany metal box. It was made By tinkering with the metalic values of Unity's standard shader, and also adding some noise.
+- The two texture objects are most noticeable on the floor and the walls of the scene. One of them is made from planks of wood, and the other is a leather texture.
+- The sky box is a gradient skybox with a cartoony style.
+
 # Lab5
 [Video of the microgame](https://drive.google.com/file/d/12b4t09sYdtp9lHlDzF32ntG9jKXG_7He/view?usp=sharing)
 
@@ -8,7 +27,7 @@
 - Modified a tarck to include a hoop jump and make appear like its floating
 - Changed the speed of the kart
 
-![lab4](images/track.PNG)
+![lab5](images/track.PNG)
 
 # Lab4
 [Video of the cubes](https://drive.google.com/file/d/1LoJKRUBF0j84DZX0MrHIM1S408vYO-Ox/view?usp=sharing)
