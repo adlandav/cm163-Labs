@@ -1,6 +1,18 @@
 # cm163-Labs
  Labs for the game graphics class
 
+# Lab7
+
+[Video of the scene](https://drive.google.com/file/d/18_G3M8sQH-evUH-it0iVGiTnDaikawi-/view?usp=sharing)
+![lab6](images/lab7.PNG)
+
+### Description:
+- The scene is made using only primitive geometry and vertex displacement shaders.
+- The clouds were made with voronoi noise and I change UVs overtime. Moreover, I added a script to make the move.
+- The rocky mountains are made similarly but with a texture and without motion.
+- The water is also made with voronoi noise which controls its pattern, and also a gradient noise wich controls its shape.
+- moreover, I added the skybox used in the previous project to set the mood of the scene
+
 # Lab6
 
 ![lab6](images/lab6.1.PNG)
